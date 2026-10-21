@@ -67,25 +67,29 @@ export function ProjectArt({ project, className = '' }: { project: Project; clas
         )}
         {project.motif === 'tenants' && (
           <g fill="none" stroke={a}>
-            {[0, 1, 2].map((r) =>
-              [0, 1, 2, 3].map((c) => (
-                <rect
-                  key={`${r}-${c}`}
-                  x={196 + c * 44}
-                  y={50 + r * 44}
-                  width="34"
-                  height="34"
-                  rx="7"
-                  strokeWidth="1.6"
-                  strokeOpacity={0.25 + ((r + c) % 3) * 0.25}
-                  fill={(r + c) % 4 === 0 ? a : 'none'}
-                  fillOpacity="0.25"
-                />
-              )),
-            )}
-            <path d="M188 200 h190" strokeWidth="2" strokeOpacity="0.7" />
-            <path d="M188 214 h190" strokeWidth="1" strokeOpacity="0.35" />
-            <path d="M188 228 h190" strokeWidth="1" strokeOpacity="0.2" />
+            <rect x="180" y="46" width="180" height="120" rx="10" strokeWidth="2" strokeOpacity="0.85" />
+            <path d="M180 74 h180" strokeWidth="1" strokeOpacity="0.4" />
+            <circle cx="196" cy="60" r="3.5" fill={a} fillOpacity="0.8" />
+            <circle cx="208" cy="60" r="3.5" fill={a} fillOpacity="0.5" />
+            <circle cx="220" cy="60" r="3.5" fill={a} fillOpacity="0.3" />
+            {[24, 45, 62, 38, 55, 68, 48, 58, 32, 50].map((h, idx) => (
+              <line
+                key={idx}
+                x1={202 + idx * 14}
+                x2={202 + idx * 14}
+                y1={148}
+                y2={148 - h}
+                strokeWidth="4"
+                strokeLinecap="round"
+                stroke={a}
+                strokeOpacity={0.7 + (idx % 3) * 0.12}
+              />
+            ))}
+            <text x="188" y="194" fontFamily="monospace" fontSize="13" fontWeight="bold" fill={a} stroke="none" letterSpacing="1.5">
+              &gt; C++ MUSIC_PLAYER.EXE
+            </text>
+            <path d="M188 208 h160" strokeWidth="1" strokeOpacity="0.3" />
+            <path d="M188 218 h120" strokeWidth="1" strokeOpacity="0.2" />
           </g>
         )}
       </svg>
@@ -96,11 +100,13 @@ export function ProjectArt({ project, className = '' }: { project: Project; clas
 /** Small fictional platform mark used in the nav and on cards. */
 export function SeriesMark({ className = '' }: { className?: string }) {
   return (
-    <span className={`inline-flex items-center gap-1.5 ${className}`}>
-      <svg viewBox="0 0 24 32" className="h-[1.1em] w-auto" aria-hidden>
-        <path d="M18 6c-1.8-1.8-4-2.6-6.5-2.6C7.6 3.4 5 5.6 5 9c0 7.6 14 4.6 14 11.6 0 3-2.8 5-6.4 5-3 0-5.4-1.2-7.2-3" fill="none" stroke="#e5132b" strokeWidth="4" strokeLinecap="round" />
-      </svg>
-      <span className="font-sans text-[0.62em] font-bold tracking-[0.36em] text-mist">SERIES</span>
+    <span className={`inline-flex items-center gap-2 ${className}`}>
+      <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#0e0e13] ring-1 ring-crimson-2/40 shadow-[0_0_15px_rgba(229,19,43,0.3)]">
+        <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden>
+          <path d="M4 20 L12 4 L20 20 M7 14 H17" fill="none" stroke="#e5132b" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </span>
+      <span className="font-sans text-[0.68em] font-bold tracking-[0.34em] text-mist">SERIES</span>
     </span>
   );
 }
